@@ -29,12 +29,12 @@ namespace PRG_Assignment_2
 
         //Constructors
         public IceCream() { }
-        public IceCream(string o, int s, List<Flavour> f, List<Topping> t)
+        public IceCream(string option, int scoops, List<Flavour> flavours, List<Topping> topping)
         {
-            Option = o;
-            Scoops = s;
-            Flavours = f;  
-            Toppings = t;   
+            Option = option;
+            Scoops = scoops;
+            Flavours = flavours;  
+            Toppings = topping;   
         }
 
     }
