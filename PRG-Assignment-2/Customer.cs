@@ -34,9 +34,27 @@ namespace PRG_Assignment_2
         //Method
         public Order MakeOrder()
         {
-
+            CurrentOrder = new Order();
+            OrderHistory.Add(CurrentOrder);
+            return CurrentOrder;
         }
 
+        public bool IsBirthday()
+        { 
+            if ( DateTime.Today == Dob )
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
+
+        public override string ToString()
+        {
+            return $"Name : {Name}, Member ID : {MemberId}, Date of birth : {Dob}, Rewards : {Rewards}";
+        }
 
 
     }
