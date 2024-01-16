@@ -29,12 +29,18 @@ namespace PRG_Assignment_2
 
         //Constructors
         public IceCream() { }
-        public IceCream(string option, int scoops, List<Flavour> flavours, List<Topping> topping)
+        public IceCream(string option, int scoops, List<Flavour> flavours, List<Topping> toppings)
         {
             Option = option;
             Scoops = scoops;
             Flavours = flavours;  
-            Toppings = topping;   
+            Toppings = toppings;   
+        }
+
+        public abstract double CalculatePrice();
+        public override string ToString()
+        {
+            return base.ToString(); 
         }
 
     }
