@@ -9,8 +9,8 @@ namespace PRG_Assignment_2
     abstract class IceCream
     {   
         //Properties
-        public string option { get; set; }
-        public int scoops { get; set; }
+        public string Option { get; set; }
+        public int Scoops { get; set; }
 
         private List<Flavour> flavours; // Assuming a list of strings for flavor
 
