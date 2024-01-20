@@ -69,7 +69,9 @@ namespace PRG_Assignment_2
                 else flavourPrice = 0;
             }
 
-            double totalCost = coneTotal + toppingPrice + flavourPrice;
+            //calculate total cost
+
+            double totalCost = coneTotal + toppingPrice + flavourPrice + dippedTotal;
 
             return totalCost;
         }

@@ -54,6 +54,8 @@ namespace PRG_Assignment_2
                 else flavourPrice = 0;
             }
 
+            //calculate total cost
+
             double totalCost = cupTotal + toppingPrice + flavourPrice;
 
             return totalCost;
