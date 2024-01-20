@@ -13,6 +13,7 @@ namespace PRG_Assignment_2
         public Cup() { }
         public Cup(string option, int scoops, List<Flavour> flavours, List<Topping> toppings) : base(option, scoops, flavours, toppings) { }
 
+        //methods
         public override double CalculatePrice()
         {
             //calculate price for number of scoops
@@ -58,7 +59,6 @@ namespace PRG_Assignment_2
             return totalCost;
         }
 
-        //methods
         public override string ToString()
         {
             return $"Cup with {Scoops} Scoops, Option: {Option}, Total Price: ${CalculatePrice():0.00}";
