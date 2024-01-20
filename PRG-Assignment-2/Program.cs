@@ -3,7 +3,7 @@
 // Student Name : Yong Xiang
 // Student Number : S10257401E
 // Student Name : Xavier 
-// Person who committed : Yong Xiang
+// Person who committed : Xavier
 //===============================//
 
 
