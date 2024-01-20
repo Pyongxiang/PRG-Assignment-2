@@ -40,7 +40,7 @@ namespace PRG_Assignment_2
         public abstract double CalculatePrice();
         public override string ToString()
         {
-            return base.ToString(); 
+            return $"Option : {Option}, Scoops : {Scoops}, Flavours : {Flavours}, Toppings : {Toppings}";
         }
 
     }

@@ -25,7 +25,7 @@ namespace PRG_Assignment_2
             Id = id;
             TimeReceived = timeReceived;            
         }
-
+        //methods
         public void ModifyIceCream(int mod_IceCream) 
         {
 
@@ -40,13 +40,17 @@ namespace PRG_Assignment_2
         {
 
         }
-
+        
         public double CalculateTotal()
         {
-            double total = 0;
+            double totalCost = 0;
 
-            
-            return 0;
+            foreach (var iceCream in IceCreamList)
+            {
+                totalCost += iceCream.CalculatePrice();
+            }
+
+            return totalCost;
         }
 
         public override string ToString()
