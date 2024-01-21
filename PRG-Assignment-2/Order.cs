@@ -26,13 +26,32 @@ namespace PRG_Assignment_2
             TimeReceived = timeReceived;            
         }
         //methods
-        public void ModifyIceCream(int mod_IceCream) 
+        public void ModifyIceCream(int iceCreamIndex) 
         {
+            if (iceCreamIndex >= 0 && iceCreamIndex < IceCreamList.Count)
+            {
+                // Get the existing ice cream at the specified index
+                IceCream existingIceCream = IceCreamList[iceCreamIndex];
 
+                // Modify the existing ice cream properties based on your logic
+                // For example, increment scoops or change flavors
+                existingIceCream.Scoops++; // Example: Increment scoops by 1
+
+                // Note: Modify other properties as needed
+
+                Console.WriteLine($"Ice cream at index {iceCreamIndex} modified.");
+            }
+            else
+            {
+                Console.WriteLine("Invalid ice cream index for modification.");
+            }
         }
+    }
 
         public void AddIceCream(IceCream add_IceCream)
         {
+         
+
 
         }
 
