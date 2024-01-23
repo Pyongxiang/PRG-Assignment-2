@@ -40,8 +40,8 @@ namespace PRG_Assignment_2
         }
 
         public bool IsBirthday()
-        { 
-            if ( DateTime.Today == Dob )
+        {
+            if (DateTime.Today == Dob)
             {
                 return true;
             }

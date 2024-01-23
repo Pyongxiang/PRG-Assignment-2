@@ -11,7 +11,7 @@ namespace PRG_Assignment_2
         //Properties
         public int Id { get; set; }
 
-        public DateTime TimeReceived { get; set;}
+        public DateTime TimeReceived { get; set; }
 
         public DateTime? TimeFulfilled { get; set; }
 
@@ -23,10 +23,10 @@ namespace PRG_Assignment_2
         public Order(int id, DateTime timeReceived)
         {
             Id = id;
-            TimeReceived = timeReceived;            
+            TimeReceived = timeReceived;
         }
         //methods
-        public void ModifyIceCream(int iceCreamIndex) 
+        public void ModifyIceCream(int iceCreamIndex)
         {
             if (iceCreamIndex >= 0 && iceCreamIndex < IceCreamList.Count)
             {
@@ -48,33 +48,33 @@ namespace PRG_Assignment_2
         }
     }
 
-        public void AddIceCream(IceCream add_IceCream)
-        {
-         
+    public void AddIceCream(IceCream add_IceCream)
+    {
 
 
-        }
 
-        public void DeleteIceCream(int del_IceCream)
-        {
-
-        }
-        
-        public double CalculateTotal()
-        {
-            double totalCost = 0;
-
-            foreach (var iceCream in IceCreamList)
-            {
-                totalCost += iceCream.CalculatePrice();
-            }
-
-            return totalCost;
-        }
-
-        public override string ToString()
-        {
-            return $"Order ID : {Id}, Time Received : {TimeReceived}, TimeFulfilled : {TimeFulfilled}, Total : {CalculateTotal()}";
-        }
     }
+
+    public void DeleteIceCream(int del_IceCream)
+    {
+
+    }
+
+    public double CalculateTotal()
+    {
+        double totalCost = 0;
+
+        foreach (var iceCream in IceCreamList)
+        {
+            totalCost += iceCream.CalculatePrice();
+        }
+
+        return totalCost;
+    }
+
+    public override string ToString()
+    {
+        return $"Order ID : {Id}, Time Received : {TimeReceived}, TimeFulfilled : {TimeFulfilled}, Total : {CalculateTotal()}";
+    }
+}
 }
