@@ -42,16 +42,16 @@ while (!exit)
             ListAllCurrentOrders();
             break;
         case "3":
-            // Implement functionality for option 3
+            RegisterCustomer();
             break;
         case "4":
-            // Implement functionality for option 4
+            CreateCustomerOrder();
             break;
         case "5":
-            // Implement functionality for option 5
+            DisplayOrder();
             break;
         case "6":
-            // Implement functionality for option 6
+            ModifyOrder();
             break;
         case "0":
             Console.WriteLine("Thank you for using I.C Treats!");
@@ -100,27 +100,6 @@ void ListAllCustomers()
 //Option 2
 //Done by Xavier
 
-
-//void ListAllCurrentOrders()
-//{
-//    string[] orders = File.ReadAllLines("orders.csv");
-//    string[] ordersData = orders[0].Split(',');
-
-
-//    //create the gold and regular queue
-//    List<string> goldQueue = new List<string>();
-//    List<string> regularQueue = new List<string>();
-
-//    //for loop for the header
-//    for (int j = 0; j < ordersData.Length; j++)
-//    {
-//        Console.Write("{0,-20}", ordersData[j]);
-//    }
-//    Console.WriteLine();
-
-
-
-//}
 
 void ListAllCurrentOrders()
 {
@@ -193,13 +172,26 @@ void ListAllCurrentOrders()
     }
 }
 
+//Option 3
+void RegisterCustomer()
+{
 
+}
 
+//Option 4
+void CreateCustomerOrder()
+{
+   
+}
 
+//Option 5
+void DisplayOrder()
+{
 
-//// Display the header
-//for (int j = 0; j < ordersData.Length; j++)
-//{
-//    Console.Write("{0,-20}", ordersData[j]);
-//}
-//Console.WriteLine();
+}
+
+//Option 6
+void ModifyOrder()
+{
+
+}
