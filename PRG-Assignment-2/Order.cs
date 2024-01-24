@@ -8,24 +8,25 @@ namespace PRG_Assignment_2
 {
     class Order
     {
-        //Properties
+        // Properties
         public int Id { get; set; }
-
         public DateTime TimeReceived { get; set; }
-
         public DateTime? TimeFulfilled { get; set; }
-
         public List<IceCream> IceCreamList { get; set; }
 
-        //Constructors
-        public Order() { }
+        // Constructors
+        public Order()
+        {
+            IceCreamList = new List<IceCream>(); // Initialize the IceCreamList to avoid null reference exceptions
+        }
 
         public Order(int id, DateTime timeReceived)
         {
             Id = id;
             TimeReceived = timeReceived;
         }
-        //methods
+
+        // Methods
         public void ModifyIceCream(int iceCreamIndex)
         {
             if (iceCreamIndex >= 0 && iceCreamIndex < IceCreamList.Count)
@@ -43,38 +44,44 @@ namespace PRG_Assignment_2
             }
             else
             {
-                Console.WriteLine("Invalid ice cream index for modification.");
+                Console.WriteLine("Invalid ice cream index.");
             }
         }
-    }
 
-    public void AddIceCream(IceCream add_IceCream)
-    {
-
-
-
-    }
-
-    public void DeleteIceCream(int del_IceCream)
-    {
-
-    }
-
-    public double CalculateTotal()
-    {
-        double totalCost = 0;
-
-        foreach (var iceCream in IceCreamList)
+        public void AddIceCream(IceCream add_IceCream)
         {
-            totalCost += iceCream.CalculatePrice();
+            IceCreamList.Add(add_IceCream);
+            Console.WriteLine("Ice cream added to the order.");
         }
 
-        return totalCost;
-    }
+        public void DeleteIceCream(int del_IceCream)
+        {
+            if (del_IceCream >= 0 && del_IceCream < IceCreamList.Count)
+            {
+                IceCreamList.RemoveAt(del_IceCream);
+                Console.WriteLine($"Ice cream at index {del_IceCream} deleted.");
+            }
+            else
+            {
+                Console.WriteLine("Invalid ice cream index for deletion.");
+            }
+        }
 
-    public override string ToString()
-    {
-        return $"Order ID : {Id}, Time Received : {TimeReceived}, TimeFulfilled : {TimeFulfilled}, Total : {CalculateTotal()}";
+        public double CalculateTotal()
+        {
+            double totalCost = 0;
+
+            foreach (var iceCream in IceCreamList)
+            {
+                totalCost += iceCream.CalculatePrice();
+            }
+
+            return totalCost;
+        }
+
+        public override string ToString()
+        {
+            return $"Order ID: {Id}, Time Received: {TimeReceived}, Time Fulfilled: {TimeFulfilled}, Total: {CalculateTotal()}";
+        }
     }
-}
 }
