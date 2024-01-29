@@ -3,18 +3,63 @@
 // Student Name : Yong Xiang
 // Student Number : S10257401E
 // Student Name : Xavier 
-// Person who committed : Yong Xiang
+// Person who committed : Xavier
 //===============================//
 
 
 
 
 using PRG_Assignment_2;
+using System.Globalization;
 
+static List<Customer> CreateCustomer()
+{
+    List<Customer> customers = new List<Customer>();
+    string[] data = File.ReadAllLines("customers.csv");
+    string[] header = data[0].Split(',');
 
+    for (int i = 1; i < data.Length; i++)
+    {
+        string[] data2 = data[i].Split(",");
 
+        // Check if the data2 array has enough elements
+        if (data2.Length >= 5) // Adjust the number based on the expected number of columns
+        {
+            // Specify the corrected DateTime format here
+            string dateFormat = "d/M/yyyy HH:mm";
+            DateTime birthDate;
 
+            try
+            {
+                if (DateTime.TryParseExact(data2[2], dateFormat, CultureInfo.InvariantCulture, DateTimeStyles.None, out birthDate))
+                {
+                    string[] data3 = File.ReadAllLines("orders.csv");
+                    Customer c = new Customer(data2[0], Convert.ToInt32(data2[1]), birthDate);
+                    for (int j = 0; j < data3.Length; j++)
+                    {
+                        string[] data4 = data3[j].Split(",");
+                        if (data2[1] == data4[1])
+                        {
+                            Order o = new Order(Convert.ToInt32(data4[0]), Convert.ToDateTime(data4[2]));
+                            c.OrderHistory.Add(o);
+                            c.CurrentOrder = o;
+                            break;
+                        }
+                    }
+                    customers.Add(c);
+                }
+                else
+                {
 
+                }
+            }
+            catch (Exception ex)
+            {
+            }
+        }
+    }
+    return customers;
+}
 
 bool exit = false;
 
@@ -99,7 +144,6 @@ void ListAllCustomers()
 
 //Option 2
 //Done by Xavier
-
 
 void ListAllCurrentOrders()
 {
@@ -187,11 +231,64 @@ void CreateCustomerOrder()
 //Option 5
 void DisplayOrder()
 {
+    ListAllCustomers();
+    Console.WriteLine("Select a customer");
+    string response = Console.ReadLine().ToLower();
+    List<Customer> customers = CreateCustomer();
+    string[] data = File.ReadAllLines("orders.csv");
+    for (int i = 1; i < data.Length; i++)
+    {
+        string[] data2 = data[i].Split(",");
+        Order order = new Order(Convert.ToInt32(data2[0]), Convert.ToDateTime(data2[2]));
+        foreach (Customer c in customers)
+        {
+            if (Convert.ToInt32(data2[1]) == c.MemberId)
+            {
+                c.OrderHistory.Add(order);
+            }
+        }
+    }
+    foreach (Customer c in customers)
+    {
+        if (c.Name.ToLower() == response)
+        {
+            Console.WriteLine("Past Orders: ");
+            Console.WriteLine("{0,-3}, {1,10}, {2,10}", "ID", "Time Received", "Time Fullfilled");
+            for (int i = 0; i < c.OrderHistory.Count; i++)
+            {
+                Console.WriteLine("{0,-3}, {1,10}, {2,10}", c.OrderHistory[i].Id, c.OrderHistory[i].TimeReceived, c.OrderHistory[i]);
+            }
+            Console.WriteLine("-----------------------------------");
+            if (c.CurrentOrder != null)
+            {
+                Console.WriteLine("Current Orders");
+                Console.WriteLine("{0,-3}, {1,10}", "ID", "Time Received");
+                Console.WriteLine("{0,-3}, {1,10}", c.CurrentOrder.Id, c.CurrentOrder.TimeReceived);
+            }
+        }
+    }
 
 }
 
 //Option 6
 void ModifyOrder()
 {
-
+    ListAllCustomers();
+    Console.WriteLine("Select a customer");
+    string response = Console.ReadLine().ToLower();
+    List<Customer> customers = CreateCustomer();
+    string[] data = File.ReadAllLines("orders.csv");
+    for (int i = 1; i < data.Length; i++)
+    {
+        string[] data2 = data[i].Split(",");
+        Order order = new Order(Convert.ToInt32(data2[0]), Convert.ToDateTime(data2[2]));
+        foreach (Customer c in customers)
+        {
+            if (Convert.ToInt32(data2[1]) == c.MemberId)
+            {
+                c.OrderHistory.Add(order);
+            }
+        }
+    }
 }
+
