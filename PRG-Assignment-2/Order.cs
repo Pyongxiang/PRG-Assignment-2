@@ -81,7 +81,17 @@ namespace PRG_Assignment_2
 
         public override string ToString()
         {
-            return $"Order ID: {Id}, Time Received: {TimeReceived}, Time Fulfilled: {TimeFulfilled}, Total: {CalculateTotal()}";
+            StringBuilder orderDetails = new StringBuilder();
+
+            orderDetails.AppendLine($"Order ID: {Id}, Time Received: {TimeReceived}, Time Fulfilled: {TimeFulfilled}, Total: {CalculateTotal()}");
+            orderDetails.AppendLine("Ice Creams:");
+
+            foreach (var iceCream in IceCreamList)
+            {
+                orderDetails.AppendLine(iceCream.ToString());
+            }
+
+            return orderDetails.ToString();
         }
     }
 }

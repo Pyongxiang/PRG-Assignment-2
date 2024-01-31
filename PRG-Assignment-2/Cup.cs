@@ -46,12 +46,10 @@ namespace PRG_Assignment_2
             double flavourPrice = 0;
             foreach (Flavour f in Flavours)
             {
-                if (f.Premium == true)
+                if (f.Premium)
                 {
-                    flavourPrice += 2;
+                    flavourPrice += 2; // accumulate premium flavour prices
                 }
-
-                else flavourPrice = 0;
             }
 
             //calculate total cost
